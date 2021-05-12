@@ -10,7 +10,7 @@ Creds: DataCamp
 """
 import numpy as np
 from sklearn.cluster import KMeans
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_iris #dataset may be outdated or unavailable
 
 iris = load_iris()
 samples = iris.data
