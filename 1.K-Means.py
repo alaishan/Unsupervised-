@@ -5,24 +5,44 @@ Created on Wed May 12 09:17:25 2021
 
 @author: Alaisha Naidu
 Name: K-Means Clustering
-
+Creds: DataCamp
 
 """
-
+import numpy as np
 from sklearn.datasets import load_iris
 from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+#K-Means Clustering uses the centroid of a p-dimensional cluster to classify a sample
 
 iris = load_iris()
 samples = iris.data
-print(samples)
+#print(samples)
 
 model = KMeans(n_clusters = 3) #3 clusters becasue there are 3 species of iris
 model.fit(samples) #fits the model to the data by locating and remembering the regions where the different clusters occur
 labels = model.predict(samples) #returns a cluster lable for each sample, indicated to which cluster a sample belongs 
-print(labels)
+#print(labels)
+
+#Classify new samples
+new_samples = np.array([[5.7, 4.4, 1.5, 0.4],
+               [6.5, 3.0, 5.5, 1.8],
+               [5.8, 2.7, 5.1, 1.9]])
+
+#print(new_samples)
+new_labels = model.predict(new_samples)
+print(new_labels)
+
+#plot Sepal Length vs Petal Length
+xs = samples[:, 0] #sepal length in 0th column
+ys = samples[:, 2] #petal length in 2nd column
+plt.scatter(xs, ys, c = labels) #c = labels colours by cluster label
+plt.show()
 
 #Output 
 """
+Sample Data
+Sepal Length, Sepal Width, Petal Length, Petal Width
 [[5.1 3.5 1.4 0.2]
  [4.9 3.  1.4 0.2]
  [4.7 3.2 1.3 0.2]
@@ -182,4 +202,7 @@ print(labels)
  0 0 2 2 0 0 0 0 2 0 2 0 2 0 0 2 2 0 0 0 0 0 2 0 0 0 0 2 0 0 0 2 0 0 0 2 0
  0 2]
 """
-
+#New Data
+"""
+[0 2 1]
+"""
