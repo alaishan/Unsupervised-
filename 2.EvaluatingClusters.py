@@ -34,4 +34,6 @@ species = df['species'].values.tolist()
 #species = ['setosa', 'setosa', 'versicolor', 'virginica', 'setosa', ...]
 print(species) #list of names of species in a dataframe
 
+#compare the species count to classification count 
+
 #df = pd.DataFrame({'Lables': labels, 'Species': species})
