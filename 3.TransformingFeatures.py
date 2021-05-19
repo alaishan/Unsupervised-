@@ -14,6 +14,7 @@ import pandas as pd
 import numpy as np
 from sklearn.datasets import load_wine
 from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
 wine = load_wine()
@@ -26,8 +27,8 @@ print(model.inertia_) #use after fit
 #K-Means automatically generates clusters that minimizes the cluster inertia 
 #print(labels)
 
-xs = samples[:, 0] #sepal length in 0th column
-ys = samples[:, 2] #petal length in 2nd column
+xs = samples[:, 0] #od280 in 0th column
+ys = samples[:, 2] #malic acid in 2nd column
 plt.scatter(xs, ys, c = labels) #c = labels colours by cluster label
 plt.show()
 
@@ -45,6 +46,15 @@ print(df)
 #crosstabulation
 ct = pd.crosstab(df['labels'], df['varieties'])
 print(ct)
+
+#features of wine dataset have very different variances - variance of a feature measures spead of its values
+#In K-Means clustering, the variance of a feature corresponds to its influence on the clustering algorithm 
+#To give every feature an even chance, the data must be transformed so that the features all have an equal variance
+scaler = StandardScaler() #gives every feature mean 0 and variance 1
+scaler.fit(samples)
+StandardScaler(copy=True, with_mean=True, with_std=True)
+samples_scaled= scaler.transform(samples)
+
 
 """
 Output: can see that the clusters are very mixed!
