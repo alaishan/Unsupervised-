@@ -14,7 +14,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import linkage, dendrogram 
 
-eurovision = pd.read_csv('eurovision-2016.csv')
+eurovision = pd.read_csv('/Users/user/Desktop/eurovision16.csv')
 country_names = eurovision['From country'].unique()
 toCountry = eurovision['To country'].unique()
 samples = np.empty((country_names.shape[0], toCountry.shape[0]))
@@ -38,14 +38,14 @@ for i in range(eurovision.shape[0]):
 
 samples = np.round(samples, 0)
 
-mergings = linkage(samples, method = 'complete')
+mergings = linkage(samples, method ='complete')
 
 
 #agglomerative hierarchical clustering means is a Bottom-Up clustering. With the bottom level having the most clusters
 #Each country being a cluster and then joining them together semantically
 
 dendrogram(mergings,
-           labels = country_names,
+           labels=country_names.tolist(),
            leaf_rotation=90,
            leaf_font_size=6)
 plt.show()
