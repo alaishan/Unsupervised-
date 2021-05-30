@@ -38,6 +38,13 @@ model.fit(samples)
 transformed = model.transform(samples)
 #print(transformed)
 
+print(model.components_) #displays principal components of the dataset
+
+#PCA features are not correlated
+#Linear correlation is evaluated with the Pearson Correlation 
+#(between -1 ie strong -ive correllation and 1 ie strong +ive correlation, 0 no correlation )
+
+
 """
 Original Array:
          total_phenols  od280/od315_of_diluted_wines
@@ -65,5 +72,9 @@ New Array:
  [ 1.25915966e+00 -1.33201192e-01]
  [ 1.17464556e+00 -1.40775294e-01]
  [ 9.33526935e-01 -4.60559297e-01]
+ 
+Principal Components:
+[[-0.64116665 -0.76740167]
+ [-0.76740167  0.64116665]]
     
 """
